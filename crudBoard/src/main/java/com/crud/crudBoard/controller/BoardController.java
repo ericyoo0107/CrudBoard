@@ -1,7 +1,5 @@
 package com.crud.crudBoard.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,9 +25,16 @@ public class BoardController {
 		return "";
 	}
 
-	@GetMapping("/board/list")
+	@GetMapping("/board/list") //html로 다시 넘겨 줄때는 Model 적어야함
 	public String boardList(Model model) {
 		model.addAttribute("list", boardService.getList());
 		return "boardList";
+	}
+
+	@GetMapping("/board/view") ///board/view?id=3 하면 id에 3들어감
+	public String boardView(Model model, Integer id)
+	{
+		model.addAttribute("article",boardService.getBoard(id));
+		return "boardView";
 	}
 }

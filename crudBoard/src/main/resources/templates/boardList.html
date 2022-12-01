@@ -22,8 +22,10 @@
             </thead>
             <tbody>
                 <tr th:each="board : ${list}">
-                    <td th:text ="${board.id}"></td>
-                    <td th:text ="${board.title}"></td>
+                    <td th:text ="${board.id}">id값</td>
+                    <td>
+                        <a th:text ="${board.title}" th:href="@{/board/view(id=${board.id})}">제목</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

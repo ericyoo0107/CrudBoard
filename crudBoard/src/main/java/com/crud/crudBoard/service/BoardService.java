@@ -16,8 +16,13 @@ public class BoardService {
 	public void write(Board board) {
 		boardRepository.save(board);
 	}
-
+//게시판 처리
 	public List<Board> getList() {
 		return boardRepository.findAll();
+	}
+
+	public Board getBoard(Integer id)
+	{
+		return boardRepository.findById(id).get();
 	}
 }
