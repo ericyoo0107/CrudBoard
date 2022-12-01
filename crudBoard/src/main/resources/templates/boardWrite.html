@@ -2,39 +2,44 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>게시판 만들기</title>
+    <title>킹받는 게시판</title>
 </head>
 <style>
-  h1{
-    border: 3px dotted aquamarine;
-    text-align: center;
-    margin:0 0 20px 0;
-  }
-  .layout{
-    width : 500px;
-    margin-top 50px;
-    margin : 0 auto;
-  }
-  .layout > input{
-    width:100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-  }
-  .layout > textarea{
-    width:100%;
-    box-sizing: border-box;
-  }
-  .layout > button{
-    margin: 10px 0 0 0;
-  }
+    h1 {
+        border: 3px dotted aquamarine;
+        text-align: center;
+        margin: 0 0 20px 0;
+    }
+
+    .layout {
+        width: 500px;
+        margin-top : 50px;
+        margin: 0 auto;
+    }
+
+    .layout input {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    .layout textarea {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .layout button {
+        margin: 10px 0 0 0;
+    }
 </style>
 <body>
-  <h1>getTheKing 게시판</h1>
-  <div class="layout">
-    <input type="text" placeholder="제목을 입력하세요">
-    <textarea placeholder="내용을 입력하세요"></textarea>
-    <button>작성완료</button>
-  </div>
-
+<h1>getTheKing 게시판</h1>
+<div class="layout">
+    <form action="/board/getData" method="post">
+        <input type="text" placeholder="제목을 입력하세요" name="title">
+        <textarea placeholder="내용을 입력하세요" name="content"></textarea>
+        <button type="submit">작성</button>
+    </form>
+</div>
 </body>
 </html>
