@@ -13,16 +13,23 @@ public class BoardService {
 	@Autowired
 	private BoardRepository boardRepository;
 
+	//글 작성 처리
 	public void write(Board board) {
 		boardRepository.save(board);
 	}
-//게시판 처리
+
+	//게시판 리스트 처리
 	public List<Board> getList() {
 		return boardRepository.findAll();
 	}
 
-	public Board getBoard(Integer id)
-	{
+	//특정 게시글 불러오기
+	public Board getBoard(Integer id) {
 		return boardRepository.findById(id).get();
+	}
+
+	//특정 게시글 삭제하기
+	public void delete(Integer id) {
+		boardRepository.deleteById(id);
 	}
 }

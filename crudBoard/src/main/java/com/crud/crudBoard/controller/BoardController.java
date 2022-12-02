@@ -32,9 +32,14 @@ public class BoardController {
 	}
 
 	@GetMapping("/board/view") ///board/view?id=3 하면 id에 3들어감
-	public String boardView(Model model, Integer id)
-	{
-		model.addAttribute("article",boardService.getBoard(id));
+	public String boardView(Model model, Integer id) {
+		model.addAttribute("article", boardService.getBoard(id));
 		return "boardView";
+	}
+
+	@GetMapping("/board/delete") ///board/delete?id=3 하면 id에 3들어감
+	public String boardDelete(Integer id) {
+		boardService.delete(id);
+		return "redirect:/board/list";
 	}
 }

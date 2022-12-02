@@ -7,5 +7,4 @@ import com.crud.crudBoard.entity.Board;
 
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Integer> {
-
 }
