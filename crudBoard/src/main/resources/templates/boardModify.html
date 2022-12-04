@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>킹받는 수정</title>
+</head>
+<style>
+  h1 {
+    border: 3px dotted aquamarine;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+
+  .layout {
+    width: 500px;
+    margin-top : 50px;
+    margin: 0 auto;
+  }
+
+  .layout input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  .layout textarea {
+    width: 100%;
+    min-height: 200px;
+  }
+
+  .layout button {
+    margin: 10px 0 0 0;
+  }
+</style>
+<body>
+<h1>getTheKing 수정</h1>
+<div class="layout">
+  <form th:action="@{/board/update/{id}(id=${board.id})}" method="post">
+    <input type="text" name="title" th:value="${board.getTitle()}">
+    <textarea name="content" th:text="${board.getContent()}"></textarea>
+    <button type="submit">수정</button>
+  </form>
+</div>
+</body>
+</html>

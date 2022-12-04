@@ -23,7 +23,7 @@
             <tbody>
                 <tr th:each="board : ${list}">
                     <td th:text ="${board.id}">id값</td>
-                    <td>
+                    <td>                                     <!--/board/view?id=board.id로 나오게함 -->
                         <a th:text ="${board.title}" th:href="@{/board/view(id=${board.id})}">제목</a>
                     </td>
                 </tr>
