@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.crud.crudBoard.entity.Board;
 import com.crud.crudBoard.service.BoardService;
@@ -21,9 +22,11 @@ public class BoardController {
 	}
 
 	@PostMapping("/board/getData")
-	public String boardGetData(Board board) {
+	public String boardGetData(Board board, Model model) {
 		boardService.write(board);
-		return "";
+		model.addAttribute("message","글 작성이 완료되었습니다");
+		model.addAttribute("searchUrl", "/board/list");
+		return "message";
 	}
 
 	@GetMapping("/board/list") //html로 다시 넘겨 줄때는 Model 적어야함
@@ -52,12 +55,13 @@ public class BoardController {
 	}
 
 	@PostMapping("/board/update/{id}")
-	public String boardUpdate(@PathVariable("id") Integer id, Board board)
-	{
+	public String boardUpdate(@PathVariable("id") Integer id, Board board, Model model){
 		Board tempBoard = boardService.getBoard(id);
-	 	tempBoard.setTitle(board.getTitle());
+		tempBoard.setTitle(board.getTitle());
 		tempBoard.setContent(board.getContent());
 		boardService.write(tempBoard);
-		return "redirect:/board/list";
+		model.addAttribute("message", "글 수정이 완료되었습니다");
+		model.addAttribute("searchUrl", "/board/list");
+		return "message";
 	}
 }
